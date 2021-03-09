@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FlagQuizApp">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".QuizQuestionsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="adjustResize">
