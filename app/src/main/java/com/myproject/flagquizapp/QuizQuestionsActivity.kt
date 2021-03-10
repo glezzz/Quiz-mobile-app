@@ -19,6 +19,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var mCurrentPosition: Int = 1
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0
+    private var mCorrectAnswers: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,10 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         mQuestionsList = Constants.getQuestions()
 
         setQuestion()
+
+        if (mCurrentPosition == mQuestionsList!!.size) {
+            binding.btnSubmit.text
+        }
 
         binding.tvOptionOne.setOnClickListener(this)
         binding.tvOptionTwo.setOnClickListener(this)
@@ -41,15 +46,22 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
      */
     private fun setQuestion() {
 
-        mCurrentPosition = 1
         // Getting the question from the list with the help of current position
         val question = mQuestionsList!![mCurrentPosition - 1]
 
         defaultOptionsView()
 
+        if (mCurrentPosition == mQuestionsList!!.size) {
+            binding.btnSubmit.text = getString(R.string.submit_btn_finish)
+
+            // Set button back to "Submit" after being "Next question" on previous answer
+        } else {
+            binding.btnSubmit.text = getString(R.string.submit_btn)
+        }
+
+        // Updates the progress bar with current position
         binding.progressBar.progress = mCurrentPosition
-        // Updates de progress bar with current position
-        binding.tvProgress.text = "$mCurrentPosition" + "/" + binding.progressBar.max
+        ("$mCurrentPosition" + "/" + binding.progressBar.max).also { binding.tvProgress.text = it }
 
         binding.tvQuestion.text = question.question
         binding.ivImage.setImageResource(question.image)
@@ -120,16 +132,19 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                     // Check if selected answer matches correct answer
                     if (question!!.correctAnswer != mSelectedOptionPosition) {
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    } else {
+                        // Increase correct answers counter if it wasn't incorrect
+                        mCorrectAnswers++
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
                     // Transform submit button
                     if (mCurrentPosition == mQuestionsList!!.size) {
-                        binding.btnSubmit.text = "FINISH"
+                        binding.btnSubmit.text = getString(R.string.submit_btn_finish)
 
-                    }else{
-                        binding.btnSubmit.text = "GO TO NEXT QUESTION"
-
+                    } else {
+                        binding.btnSubmit.text = getString(R.string.submit_btn_next_question)
                     }
+                    mSelectedOptionPosition = 0
                 }
             }
         }

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Flag Quiz App</string>
+    <string name="submit_btn_finish">FINISH</string>
+    <string name="submit_btn_next_question">NEXT QUESTION</string>
+    <string name="submit_btn">SUBMIT</string>
 </resources>
