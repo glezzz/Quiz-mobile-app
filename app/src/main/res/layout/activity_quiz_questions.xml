@@ -59,7 +59,7 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <EditText
+        <TextView
             android:id="@+id/tv_option_one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             android:textColor="@color/light_gray"
             android:textSize="18sp" />
 
-        <EditText
+        <TextView
             android:id="@+id/tv_option_two"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
             android:textColor="@color/light_gray"
             android:textSize="18sp" />
 
-        <EditText
+        <TextView
             android:id="@+id/tv_option_three"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
             android:textColor="@color/light_gray"
             android:textSize="18sp" />
 
-        <EditText
+        <TextView
             android:id="@+id/tv_option_four"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
