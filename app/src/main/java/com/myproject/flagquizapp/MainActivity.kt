@@ -18,9 +18,6 @@ class MainActivity : AppCompatActivity() {
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
-//        val startButton: Button = findViewById(R.id.btn_start)
-//        val etName: EditText = findViewById(R.id.et_name)
-
         binding.btnStart.setOnClickListener {
             if (binding.etName.text.toString().isEmpty()) {
                 Toast.makeText(
@@ -29,7 +26,11 @@ class MainActivity : AppCompatActivity() {
                 ).show()
 
             } else {
+                // This is the way to move to another/next Activity
                 val intent = Intent(this, QuizQuestionsActivity::class.java)
+                // Send this information (username) over with the intent to next activity (QuizQuestionsActivity)...
+                intent.putExtra(Constants.USERNAME, binding.etName.text.toString())
+                // ...by starting this intent so we can retrieve the info there
                 startActivity(intent)
                 finish()
             }

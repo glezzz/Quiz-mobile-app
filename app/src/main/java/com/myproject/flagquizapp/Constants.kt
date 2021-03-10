@@ -2,6 +2,10 @@ package com.myproject.flagquizapp
 
 object Constants {
 
+    const val USERNAME: String = "username"
+    const val TOTAL_QUESTIONS: String = "total_questions"
+    const val CORRECT_ANSWERS: String = "correct_answers"
+
     fun getQuestions(): ArrayList<Question> {
         val questionsList = ArrayList<Question>()
 

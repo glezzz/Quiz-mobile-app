@@ -3,4 +3,11 @@
     <string name="submit_btn_finish">FINISH</string>
     <string name="submit_btn_next_question">NEXT QUESTION</string>
     <string name="submit_btn">SUBMIT</string>
+    <string name="please_enter_your_name">Please, enter your name</string>
+    <string name="welcome">Welcome</string>
+    <string name="flag_quiz">Flag Quiz</string>
+    <string name="name">Name</string>
+    <string name="start">Start</string>
+    <string name="what_country_does_this_flag_belong_to">What country does this flag belong to?</string>
+    <string name="submit">SUBMIT</string>
 </resources>

@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="What country does this flag belong to?"
+            android:text="@string/what_country_does_this_flag_belong_to"
             android:textColor="@color/dark_gray"
             android:textSize="22sp" />
 
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/purple_500"
-            android:text="SUBMIT"
+            android:text="@string/submit"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />

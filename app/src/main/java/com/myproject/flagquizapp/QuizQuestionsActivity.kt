@@ -1,11 +1,11 @@
 package com.myproject.flagquizapp
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.myproject.flagquizapp.databinding.ActivityQuizQuestionsBinding
@@ -20,11 +20,15 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0
     private var mCorrectAnswers: Int = 0
+    private var mUserName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuizQuestionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // This is how we retrieve and store the username with got in the MainActivity
+        mUserName = intent.getStringExtra(Constants.USERNAME)
 
         mQuestionsList = Constants.getQuestions()
 
@@ -118,11 +122,13 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                             setQuestion()
                         }
                         else -> {
-                            Toast.makeText(
-                                this,
-                                "You have successfully completed the quiz",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            // Send username, total questions & correct answers amount to ResultActivity
+                            val intent = Intent(this, ResultActivity::class.java)
+                            intent.putExtra(Constants.USERNAME, mUserName)
+                            intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                            intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                            startActivity(intent)
+                            //finish()
                         }
                     }
                     // User has selected an option
